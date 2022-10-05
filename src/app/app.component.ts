@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faHome, faEnvelope, faPhone, faPrint } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'RecipeBookClient';
+  public isMenuCollapsed = true;
+  faHome = faHome;
+  faEnvelope = faEnvelope;
+  faPhone = faPhone;
+  faPrint = faPrint;
 }
