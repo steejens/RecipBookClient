@@ -12,6 +12,7 @@ import { ContactComponent } from './views/contact/contact.component';
 import { FoodFilterComponent } from './components/food-filter/food-filter.component';
 import { FoodCardComponent } from './components/food-card/food-card.component';
 import { FoodsComponent } from './components/foods/foods.component';
+import { FoodDetailsComponent } from './views/food-details/food-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { FoodsComponent } from './components/foods/foods.component';
     ContactComponent,
     FoodFilterComponent,
     FoodCardComponent,
-    FoodsComponent
+    FoodsComponent,
+    FoodDetailsComponent
   ],
   imports: [
     BrowserModule,

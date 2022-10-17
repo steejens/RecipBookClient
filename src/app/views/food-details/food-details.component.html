@@ -1,0 +1,76 @@
+<div class="container">
+  <!--<h1>{{foodDetails?.title}}</h1>
+<p>{{foodDetails?.description}}</p>
+<div>
+  <h4>Cooking instructions</h4>
+  <div *ngFor="let instruction of cookingInstructions">
+      <p>{{instruction.instructionStepText}}</p>
+  </div>
+  <p>it is {{foodCalories}}Kcal in total</p>
+</div>-->
+
+<div class="receipe-post-area section-padding-80 container">
+          <!-- Receipe Slider -->
+        <div class="container">
+          <img src="/assets/foods/{{foodId}}/image.png" alt="s" style="height: 60vh">
+        </div>
+
+        <!-- Receipe Content Area -->
+        <div class="receipe-content-area">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <div class="receipe-headline my-5">
+                            <span>April 05, 2018</span>
+                            <h2>{{foodDetails?.title}}</h2>
+                            <div class="receipe-duration">
+                              <h6 *ngIf="foodDetails && foodDetails.preparationTime">Prep: {{foodDetails.preparationTime}} min<ng-container *ngIf="foodDetails.preparationTime < 2">s</ng-container></h6>
+                              <h6 *ngIf="foodDetails && foodDetails.cookingTime">Cook: {{foodDetails.cookingTime}} min<ng-container *ngIf="foodDetails.cookingTime < 2">s</ng-container></h6>
+                              <h6 *ngIf="foodDetails && foodDetails.servingFor">Yields: {{foodDetails.servingFor}} Serving<ng-container *ngIf="foodDetails.servingFor < 2">s</ng-container></h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <div class="receipe-ratings text-right my-5">
+                          <p class="p-0"><b><i>Difficulty Level</i></b></p>
+                            <div class="ratings">
+                              <fa-icon *ngFor="let star of numOfStars" [icon]="faStar"></fa-icon>
+                              <fa-icon *ngIf="putHalfStar" [icon]="faStarHalf"></fa-icon>
+                            </div>
+                        </div>
+                      <div class="receipe-ratings text-right my-5">
+                          <p class="p-0"><b><i>Calories</i></b></p>
+                          <p>Total: {{foodCalories}} kCal</p>
+                          <p *ngIf="foodDetails && foodDetails.servingFor">Per Serving: {{foodCalories/foodDetails.servingFor}} kCal</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <!-- Single Preparation Step -->
+                        <div class="single-preparation-step d-flex m-2" *ngFor="let entry of cookingInstructions">
+                            <h4><ng-container *ngIf="entry.stepOrder<10">0</ng-container>{{entry.stepOrder}}.</h4>
+                            <p>{{entry.instructionStepText}}</p>
+                        </div>
+                    </div>
+
+                    <!-- Ingredients -->
+                    <div class="col-12 col-lg-4">
+                        <div class="ingredients">
+                            <h4 class=" mb-3"><b><i>Ingredients</i></b></h4>
+                            <!-- Custom Checkbox -->
+                            <div class="custom-control custom-checkbox m-0" *ngFor="let entry of foodIngredients">
+                                <input type="checkbox" class="custom-control-input p-0" id="customCheck1">
+                                <label class="custom-control-label ps-3" for="customCheck1">{{entry.unitCount}} {{entry.unit.title}} - {{entry.ingredient.title}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class FoodService {
 
   filters: any = {
-    type: '',
+    TypeRefId: '',
     CategoryRefId: '',
   };
 
@@ -20,20 +20,11 @@ export class FoodService {
 
 
   setTypeSelected(type: any){
-    if (type == "all"){
-      this.filters.TypeRefId = "";
-    }else{
-      this.filters.TypeRefId = type;
-    }
-
-
+      this.filters.TypeRefId = type == "all" ? "": type;
   }
+
   setCategorySelected(category: any){
-    if (category == "all"){
-      this.filters.CategoryRefId = "";
-    }else{
-      this.filters.CategoryRefId = category;
-    }
+      this.filters.CategoryRefId = category == "all" ? "": category;
   }
 
   getAll(){
@@ -45,5 +36,22 @@ export class FoodService {
     })
     this.targetUrl = "https://localhost:7287/api/Food" + queryParams.slice(0, queryParams.length-1);
      return this.http.get(this.targetUrl)
+   }
+   getById(foodId:string){
+      let targetUrl = 'https://localhost:7287/api/Food/foodById?FoodId='+foodId;
+      return this.http.get(targetUrl)
+   }
+   getInstructions(foodId:string){
+      let targetUrl = 'https://localhost:7287/api/Food/CookingInstructions?FoodRefId='+foodId;
+      return this.http.get(targetUrl)
+   }
+   getIngredients(foodId:string){
+      let targetUrl = 'https://localhost:7287/api/Ingredient/FoodIngredients?FoodId='+foodId;
+      return this.http.get(targetUrl)
+   }
+   getMeasurements(ingredientRefId:string,unitRefId:string){
+
+      let targetUrl = 'https://localhost:7287/api/Ingredient/measurement?IngredientRefId='+ingredientRefId+'&UnitRefId='+unitRefId;
+      return this.http.get(targetUrl)
    }
 }

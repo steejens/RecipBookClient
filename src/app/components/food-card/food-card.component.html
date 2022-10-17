@@ -2,18 +2,27 @@
 <div class="card">
 <!-- Card image -->
   <div class="view overlay">
-    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).webp"
+    <img class="card-img-top" src="/assets/foods/{{food.foodId}}/image.png"
       alt="Card image cap">
   </div>
+  <div class="container ps-1">
+    <div class="row">
+      <div class="col-sm-6">
+        <p class="mb-0" style="font-size: 10px"><b><i>Category:</i></b> {{food.foodCategory.title}}</p>
+      </div>
+      <div class="col-sm-6">
+         <p class="mb-0" style="font-size: 10px"><b><i>Type:</i></b> {{food.foodType.title}}</p>
+      </div>
+    </div>
+  </div>
   <!-- Card content -->
-  <div class="card-body">
+  <div class="card-body p-1">
     <!-- Title -->
-    <h4 class="card-title">Card title</h4>
+    <h4 class="card-title mb-0">{{food.title}}</h4>
     <!-- Text -->
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-      content.</p>
+    <p class="card-text">{{food.description}}</p>
     <!-- Button -->
-    <a href="#" class="btn btn-sm btn-dark">Details</a>
+    <a [routerLink]="['/details',food.foodId]" class="btn btn-sm btn-dark">Details</a>
   </div>
 </div>
 <!-- Card -->

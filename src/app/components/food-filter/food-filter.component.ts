@@ -12,21 +12,18 @@ export class FoodFilterComponent implements OnInit {
   categories: any = null;
   @Output() onChange = new EventEmitter<any>();
 
-
   constructor(private foodFilterService : FoodFilterService, private foodService: FoodService) { }
 
+  callCategory(value: any) {
+      this.foodService.setCategorySelected(value);
+      this.onChange.emit();
+  }
 
-callCategory(value: any) {
-    let type: string = "category";
-    this.foodService.setCategorySelected(value);
-    this.onChange.emit();
-}
+  callType(value: any) {
+      this.foodService.setTypeSelected(value);
+      this.onChange.emit();
+  }
 
-callType(value: any) {
-    let type: string = "type";
-    this.foodService.setTypeSelected(value);
-    this.onChange.emit();
-}
   ngOnInit(): void {
     this.foodFilterService.getAllCategories().subscribe((response: any)=> {
        this.categories = response.result;
